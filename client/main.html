@@ -1,25 +1,60 @@
+
+
 <head>
-  <title>hello</title>
+
+    <title>Blog Design on Meteor Framework</title>
+
 </head>
 
 <body>
-  <h1>Welcome to Meteor!</h1>
 
-  {{> hello}}
-  {{> info}}
 </body>
+<template name="layout">
+    {{>nav}}
+    {{>yield}}
 
-<template name="hello">
-  <button>Click Me</button>
-  <p>You've pressed the button {{counter}} times.</p>
+</template>
+<template name="loginLayout">
+    {{>yield}}
 </template>
 
-<template name="info">
-  <h2>Learn Meteor!</h2>
-  <ul>
-    <li><a href="https://www.meteor.com/try" target="_blank">Do the Tutorial</a></li>
-    <li><a href="http://guide.meteor.com" target="_blank">Follow the Guide</a></li>
-    <li><a href="https://docs.meteor.com" target="_blank">Read the Docs</a></li>
-    <li><a href="https://forums.meteor.com" target="_blank">Discussions</a></li>
-  </ul>
+<template name="login">
+    <div class="container">
+
+        <div class="row" >
+            <div class=" jumbotron col-md-12" style="color:white;background: url('/images/meteor.jpg');background-size: cover">
+                <h1 class=" text-center text-success ">Meteor Blog</h1>
+
+            </div>
+            <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+                <form role="form">
+                    <fieldset>
+                        <h3>Please Sign In</h3>
+                        <hr class="colorgraph">
+                        <div class="form-group">
+                            <input type="email" name="email" id="email" class="form-control input-lg" placeholder="Email Address">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" name="password" id="password" class="form-control input-lg" placeholder="Password">
+                        </div>
+                        <span class="button-checkbox">
+
+
+				</span>
+                        <hr class="colorgraph">
+                        <div class="row">
+                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                <input type="submit" class="btn btn-lg btn-success btn-block" value="Sign In">
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                <a href="" class="btn btn-lg btn-primary btn-block">Register</a>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+
+    </div>
 </template>
+
