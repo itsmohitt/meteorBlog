@@ -2,21 +2,32 @@ import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
 
 import './main.html';
+Template.feed.onCreated(function(){
 
-Template.hello.onCreated(function helloOnCreated() {
-  // counter starts at 0
-  this.counter = new ReactiveVar(0);
+
+});
+Template.feed.events({
+    'click #saveFeed' : function(e){
+        let feedText = $('textarea#feed');
+        if(!feedText || !feedText.val()) return;
+        Feed.insert({'text': feedText.val(),'owner' : Meteor.userId()});
+        feedText.val('');
+    },
+    'keypress .makeComment' : function(e){
+       if(e.keyCode!=13){
+           console.log('typed');
+       }
+    }
 });
 
-Template.hello.helpers({
-  counter() {
-    return Template.instance().counter.get();
-  },
+Meteor.subscribe("feed");
+Meteor.subscribe("comment");
+Template.feed.helpers({
+    Feed : function(){
+        return Feed.find().fetch();
+    },
+
 });
 
-Template.hello.events({
-  'click button'(event, instance) {
-    // increment the counter when button is clicked
-    instance.counter.set(instance.counter.get() + 1);
-  },
-});
+
+
