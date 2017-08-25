@@ -11,7 +11,7 @@
                                 <img class="thumbnail img-responsive" src="https://lut.im/7JCpw12uUT/mY0Mb78SvSIcjvkf.png" width="300px" height="300px">
                             </div>
                             <div class="media-body">
-                                <h2><strong>{{username}}</strong><br/><small>{{email}}</small></h2>
+                                <h2><strong>{{userEmail}}</strong></h2>
                                 <hr>
                                 <h3><strong>Location</strong></h3>
                                 <p>Earth</p>
@@ -45,7 +45,7 @@
                                 <img class="media-object img-circle" src="https://lut.im/7JCpw12uUT/mY0Mb78SvSIcjvkf.png" width="50px" height="50px" style="margin-right:8px; margin-top:-5px;">
                             </a>
                         </div>
-                        <h4><a href="#" style="text-decoration:none;"><strong>John Doe</strong></a> – <small><small><a href="#" style="text-decoration:none; color:grey;"><i><i class="fa fa-clock-o" aria-hidden="true"></i> 42 minutes ago</i></a></small></small></h4>
+                        <h4><a href="#" style="text-decoration:none;"><strong>{{author}}</strong></a> – <small><small><a href="#" style="text-decoration:none; color:grey;"><i><i class="fa fa-clock-o" aria-hidden="true"></i> 42 minutes ago</i></a></small></small></h4>
                         <hr>
                         <div class="post-content">
                             <p>{{text}}</p>
@@ -53,29 +53,30 @@
                         </div>
 
                         <hr>
+
                         <div class="comment-content">
-                            <a class="btn btn-default btn-xs"><i class="fa fa-bars" aria-hidden="true"></i> Show 12 more comments</a>
-                            <hr/>
+
+
+                            {{#each Comment }}
                             <div class="post-content">
                                 <div class="panel-default">
                                     <div class="panel-body">
                                         <div class="pull-left">
                                             <a href="#">
-                                                <img class="media-object img-circle" src="https://lut.im/yR07xwobAA/bZpvdTZmBBTZDJDd.png" width="35px" height="35px" style="margin-right:8px; margin-top:-5px;">
+                                                <img class="media-object img-circle" src="https://lut.im/7JCpw12uUT/mY0Mb78SvSIcjvkf.png" width="35px" height="35px" style="margin-right:8px; margin-top:-5px;">
                                             </a>
                                         </div>
-                                        <h4><a href="#" style="text-decoration:none;"><strong>Mi Chleen</strong></a></h4>
+                                        <h4><a href="#" style="text-decoration:none;"><strong>{{author}}</strong></a></h4>
                                         <hr>
                                         <div class="post-content">
-                                            Another comment.<br><br>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque at arcu sapien. Donec laoreet, nisl quis tempor hendrerit, libero augue blandit turpis, in dignissim odio mauris eu tortor. Ut hendrerit ipsum elit, a elementum nulla ultrices eu. In posuere mollis efficitur. Maecenas justo turpis, tristique sit amet ultricies quis, molestie eget ex. Nam vestibulum consequat tincidunt. Morbi vitae placerat sapien. Phasellus quis mi tincidunt sem scelerisque tincidunt. Ut viverra porttitor sagittis. Phasellus aliquam auctor purus, id sollicitudin mauris pulvinar ac. Vivamus vel erat nec orci ultricies iaculis quis sit amet augue. Vestibulum aliquam felis lorem, interdum porttitor sapien sodales ac. Maecenas id ullamcorper risus. Suspendisse id dui sed urna rutrum pharetra. Nam eu lectus et orci vestibulum bibendum. Mauris et pulvinar dui, ac facilisis leo.
+                                            {{text}}
                                             <br><small><small><a href="#" style="text-decoration:none; color:grey;"><i><i class="fa fa-clock-o" aria-hidden="true"></i> 9 minutes ago</i></a></small></small>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <hr/>
-
+                        {{/each}}
                         <div class="media">
                             <div class="pull-left">
                                 <a href="#">
@@ -83,14 +84,23 @@
                                 </a>
                             </div>
                             <div class="media-body">
-                                <textarea class="form-control makeComment" rows="1" placeholder="Comment"></textarea>
+                                <textarea class="form-control makeComment" post="{{_id}}" rows="1" placeholder="Comment"></textarea>
                             </div>
                         </div>
                     </div>
                     </div>
                 </div>
-                {{/each}}
+                {{/each }}
             </div>
         </div>
     </div>
+</template>
+<template name="author">
+    <div class="pull-left">
+        <a href="#">
+            <img class="media-object img-circle" src="https://lut.im/7JCpw12uUT/mY0Mb78SvSIcjvkf.png" width="50px" height="50px" style="margin-right:8px; margin-top:-5px;">
+        </a>
+    </div>
+    <h4><a href="#" style="text-decoration:none;"><strong>{{author.emails}}</strong></a> – <small><small><a href="#" style="text-decoration:none; color:grey;"><i><i class="fa fa-clock-o" aria-hidden="true"></i> 42 minutes ago</i></a></small></small></h4>
+    <hr>
 </template>
