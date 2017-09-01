@@ -22,8 +22,8 @@ Comment.allow({
     }
 });
 Meteor.methods({
-    userDetails:  function (_id){
-
-    return Meteor.users.find({'_id':_id}).fetch();
-}
+    findUser:  function (_id){
+        let user = Meteor.users.findOne({'_id':_id});
+        return user.emails[0];
+    }
 });

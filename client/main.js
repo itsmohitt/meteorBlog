@@ -42,9 +42,9 @@ Template.feed.helpers({
         return feeds;
     },
     author: function() {
-       // console.log(Meteor.users.findOne({ _id: this.owner }));
-        let user = Meteor.users.findOne({ _id: this.owner });
-        return user.emails[0].address;
+        let self = this;
+        let email = Call(self.owner,'findUser', self.owner).result();
+        return email.address;
 
     },
     userEmail : function(){
